@@ -210,8 +210,8 @@ client.on('message', async message => {
   .setThumbnail(message.author.avatarURL)
   .setDescription(`
   
-☀️** Şuanda  \`${db.get('Proje')}\` URL'yi 7/24 Aktif Tutuyor. **
-☀️**  Bu Linklerden Sadece \`${db.fetch(`Sahiplik_${message.author.id}`) || null}\` Tane Senin URl'ni Uptime ediyor!**
+<a:white_tick:942001791908872222> ** Şuanda  \`${db.get('Proje')}\` URL'yi 7/24 Aktif Tutuyor. **
+<a:white_tick:942001791908872222> ** Bu Linklerden Sadece \`${db.fetch(`Sahiplik_${message.author.id}`) || null}\` Tane Senin URl'ni Uptime ediyor!**
 `)
   message.channel.send(say)
   }
@@ -227,19 +227,19 @@ client.on('message', async message => {
 
 `)
   .addField('** Maxi Uptime **',`
-- **.ekle (glitch show linki)** = Botunuzu 7/24 Aktif Tutar.
-- **.linkler** = 7/24 Tuttuğum linklerini gösterir.
-- **.say** = Tüm Uptime edilmiş bot sayısını gösterir.
+**m!ekle (glitch show linki)** = Botunuzu 7/24 Aktif Tutar.
+**m!linkler** = 7/24 Tuttuğum linklerini gösterir.
+**m!say** = Tüm Uptime edilmiş bot sayısını gösterir.
 `)
   .addField('------------------------------------------------------',`
-[Destek Sunucu](https://discord.gg/xB2VurEjRU)`)
+[Destek Sunucu](https://discord.gg/maxicode)`)
 
   message.channel.send(pxd)
   }
 
     if(Split[0] == prefix+'linkler') {
     const Linkleri = db.fetch(`Projesi_${message.author.id}`)
-    if (!db.get('Linkler').map(Revenge => Revenge.owner).includes(message.author.id)) return message.channel.send(new Discord.MessageEmbed().setColor('GREEN').setDescription(`\<a:driphearts:906521077541371925> **Hiç link eklememişsin. Üzdün Beni Dostum Link Eklemek İçin \`${prefix}ekle\` yazman yeterli**`))
+    if (!db.get('Linkler').map(Revenge => Revenge.owner).includes(message.author.id)) return message.channel.send(new Discord.MessageEmbed().setColor('GREEN').setDescription(`\<a:KingTacGif:942126425236971540> **Hiç link eklememişsin. Kral Link Eklemek Ücretsiz Sahibim Paralı Yapmadı Eklemek İçin \`${prefix}ekle\` yazman yeterli**`))
     message.channel.send(new Discord.MessageEmbed().setColor('GREEN').setDescription(`- **7/24 Aktfi Tuttuğum botlarınızın linklerini daha güvenli olduğunda DM üzerinden gönderdim ${message.author}**`).setThumbnail(message.author.avatarURL))
     message.author.send(new Discord.MessageEmbed().setColor('#F39de8').setDescription(`- ** Uptime Ettigin Linklerin:** \n\n\``+Linkleri.join('\n')+`\`
 
@@ -254,7 +254,7 @@ client.on('message', async message => {
 
 client.on('ready', () => {
 client.user.setActivity(`+ekle (Kısa Link)`, { type: 'PLAYING' })
-client.user.setStatus('online')
+client.user.setStatus('dnd')
   
 })
 
@@ -331,7 +331,7 @@ client.on("message" , message => {
       const cmfbilgiafk = new Discord.MessageEmbed()
       .setDescription(`${message.author} - Etiketlemiş Olduğun <@!${codemarefikisi2}> Kişisi Şuan **${cmfsebep}** Sebebiyle AFK`)
       .setColor("#36393F")
-      .setFooter('XroY | AFK')
+      .setFooter('Maxi | AFK')
       message.channel.send(cmfbilgiafk)
     }
   }

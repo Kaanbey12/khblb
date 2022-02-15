@@ -211,7 +211,7 @@ client.on('message', async message => {
   .setDescription(`
   
 ☀️** Şuanda  \`${db.get('Proje')}\` URL'yi 7/24 Aktif Tutuyor. **
-☀️ **  Bu Linklerden Sadece \`${db.fetch(`Sahiplik_${message.author.id}`) || null}\` Tane Senin URl'ni Uptime ediyor!**
+☀️**  Bu Linklerden Sadece \`${db.fetch(`Sahiplik_${message.author.id}`) || null}\` Tane Senin URl'ni Uptime ediyor!**
 `)
   message.channel.send(say)
   }
@@ -315,3 +315,41 @@ Lütfen spam ATMAYINIZ`  )
 
 //tokenininizi giriniz.
 client.login(process.env.token);
+client.on("message" , message => {
+  if(!message.guild) return;
+  if(message.content.startsWith(ayarlar.prefix + 'afk')) return;
+
+  let codemarefiafk = message.mentions.users.first()
+  let codemarefikisi = db.fetch(`kisiid_${message.author.id}_${message.guild.id}`)
+  let codemarefikisiisim = db.fetch(`kisiisim_${message.author.id}_${message.guild.id}`)
+
+  if(codemarefiafk){
+    let cmfsebep = db.fetch(`cmfsebep_${codemarefiafk.id}_${message.guild.id}`)
+    let codemarefikisi2 = db.fetch(`kisiid_${codemarefiafk.id}_${message.guild.id}`)
+
+    if(message.content.includes(codemarefikisi2)){
+      const cmfbilgiafk = new Discord.MessageEmbed()
+      .setDescription(`${message.author} - Etiketlemiş Olduğun <@!${codemarefikisi2}> Kişisi Şuan **${cmfsebep}** Sebebiyle AFK`)
+      .setColor("#36393F")
+      .setFooter('XroY | AFK')
+      message.channel.send(cmfbilgiafk)
+    }
+  }
+
+  if(message.author.id === codemarefikisi){
+
+    db.delete(`cmfsebep_${message.author.id}_${message.guild.id}`)
+    db.delete(`kisiid_${message.author.id}_${message.guild.id}`)
+    db.delete(`kisiisim_${message.author.id}_${message.guild.id}`)
+
+    
+    message.member.setNickname(codemarefikisiisim)
+
+    const cmfbilgiafk = new Discord.MessageEmbed()
+    .setAuthor(`Hoşgeldin ${message.author.username}`, message.author.avatarURL({dynamic: true, size: 2048}))
+    .setDescription(`<@!${codemarefikisi}> Başarılı Bir Şekilde **AFK** Modundan Çıkış Yaptın.`)
+    .setColor("#36393F")
+    .setFooter('Maxi | AFK')
+    message.channel.send(cmfbilgiafk)
+  }  
+}) 
